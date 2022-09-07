@@ -225,15 +225,15 @@ public class CoreImageProviderTest {
 
         byte[] data1 = ImageUtils.saveImageToData(imgDesc);
         byte[] data2 = ImageUtils.saveImageToData(imgDesc);
-        Assert.assertNotEquals(data2, data1);
+        Assert.assertEquals(data2, data1);
 
         ImageDescriptor newImgDesc1 = ImageUtils.createImageFromData(data1);
         ImageDescriptor newImgDesc2 = ImageUtils.createImageFromData(data2);
-        Assert.assertNotEquals(newImgDesc2, newImgDesc1);
+        Assert.assertEquals(newImgDesc2, newImgDesc1);
 
         Image img1 = newImgDesc1.createImage();
         Image img2 = newImgDesc2.createImage();
-        Assert.assertNotEquals(img2, img1);
+        Assert.assertEquals(img2, img1);
     }
 
 }
