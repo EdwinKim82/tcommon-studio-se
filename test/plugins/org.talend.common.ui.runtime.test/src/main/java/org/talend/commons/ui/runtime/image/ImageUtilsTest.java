@@ -22,24 +22,28 @@ public class ImageUtilsTest {
     
     @Test
     public void testCreateImageFromData() {
-        byte[] data = new byte[] {12, 3, 5, 7, 23, 56};
-        byte[] dup_data = new byte[data.length];
-        System.arraycopy(data, 0, dup_data, 0, dup_data.length);
+        IImage icon = ECoreImage.PROCESS_ICON;
+        ImageDescriptor imgDesc = ImageDescriptor.createFromFile(icon.getLocation(), icon.getPath());
         
-        ImageDescriptor createdImageFromData = ImageUtils.createImageFromData(data);
-        assertSame(ImageUtils.createImageFromData(data), createdImageFromData);
-        assertSame(ImageUtils.createImageFromData(dup_data), createdImageFromData);
+        byte[] data1 = ImageUtils.saveImageToData(imgDesc);
+        byte[] data2 = ImageUtils.saveImageToData(imgDesc);
+        
+        ImageDescriptor createdImageFromData = ImageUtils.createImageFromData(data1);
+        assertSame(ImageUtils.createImageFromData(data1), createdImageFromData);
+        assertSame(ImageUtils.createImageFromData(data2), createdImageFromData);
     }
     
     @Test
     public void testDisposeImages() {
-        byte[] data = new byte[] {12, 3, 5, 7, 23, 56};
-        byte[] dup_data = new byte[data.length];
-        System.arraycopy(data, 0, dup_data, 0, dup_data.length);
+        IImage icon = ECoreImage.PROCESS_ICON;
+        ImageDescriptor imgDesc = ImageDescriptor.createFromFile(icon.getLocation(), icon.getPath());
         
-        ImageDescriptor createdImageFromData1 = ImageUtils.createImageFromData(data);
-        ImageUtils.disposeImages(dup_data);
-        ImageDescriptor createdImageFromData2 = ImageUtils.createImageFromData(data);
+        byte[] data1 = ImageUtils.saveImageToData(imgDesc);
+        byte[] data2 = ImageUtils.saveImageToData(imgDesc);
+        
+        ImageDescriptor createdImageFromData1 = ImageUtils.createImageFromData(data1);
+        ImageUtils.disposeImages(data2);
+        ImageDescriptor createdImageFromData2 = ImageUtils.createImageFromData(data1);
         assertNotSame(createdImageFromData1, createdImageFromData2);
     }
 }
