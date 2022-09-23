@@ -58,6 +58,8 @@ public final class JavaUtils {
 
     public static final List<String> AVAILABLE_VERSIONS = Arrays.asList(JavaCore.VERSION_1_8 );
 
+    public static final String SKIP_ILLEGAL_ACCESS_CHECK = "skip.illegal.access.check"; //$NON-NLS-1$
+
     public static final String PROCESSOR_TYPE = "javaProcessor"; //$NON-NLS-1$
 
     public static final String PATH_SEPARATOR = "/"; //$NON-NLS-1$
